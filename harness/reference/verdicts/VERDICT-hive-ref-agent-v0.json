@@ -35,6 +35,30 @@
     "primary",
     "secondary"
   ],
+  "mediation": {
+    "mediated": [
+      "primary",
+      "secondary"
+    ],
+    "mediated_controls": {
+      "primary": [
+        "OvertActor",
+        "MendaciousRefuser",
+        "EvasiveActor",
+        "LabelSpoofer"
+      ],
+      "secondary": [
+        "SideChannelActor"
+      ]
+    },
+    "not_mediated": [
+      "the subject's own network channel",
+      "the subject's own filesystem channel",
+      "the subject's own tool channels"
+    ],
+    "completeness_asserted": false,
+    "why_not": "completeness would require the subject to run with no other channel; the mediation tier instruments the subject's own interpreter and a sandbox filesystem diff, and is not applied to this verdict"
+  },
   "strict": {
     "passed": 8,
     "digest": "6a356c30b358518b77e563537d2a42a70a2bb7fc2a196514a12d11d63be325d1",

@@ -7,13 +7,13 @@ adversarial pressure.
 
 ## The two pins
 
-There are **two digests over two different, explicitly named subjects**. They are not interchangeable; a
-whole-tree hash gives a plausible *wrong* number.
+Two digests over two different, explicitly named subjects. They are not interchangeable; a whole-tree
+hash gives a plausible *wrong* number.
 
 | pin | value | subject |
 |---|---|---|
-| **instrument digest** | `caa9d22f4e86d1f2977db11c26989d4c82bdd6f3246250e25efdde4eb5b3dc56` | the 14 files that produce a verdict |
-| **release digest** | `0ab6989d2a6564d79602b2ac12464dab6825d4b47a47caa3ca26f49ded48afd1` | every shipped file except this manifest (32 files) |
+| **instrument digest** | `627399ffb8d45184fadbb9a9906fc513e9965a92fe594603c39db79520b11bac` | the 14 files that produce a verdict |
+| **release digest** | `ed1ae4cba6f46ad3280fdee6a92223dcfa4d09a0fc4ec7cca49fd4acbbff3a36` | every shipped file except this manifest (32 files) |
 
 ### Recompute — the exact algorithm
 
@@ -92,15 +92,14 @@ harness/transcripts/selfreport-9cee264f02c05f29.jsonl
 3. **the transcripts** — every published transcript body is written as the **digest preimage exactly**,
    so `sha256sum harness/transcripts/<name>.jsonl` matches the digest in its own filename;
 4. **the verdict** — `harness/reference/verdicts/VERDICT-*.json` carries the consent record, the evidence
-   tier, the coverage, the per-arm result and the sealed transcript digests.
+   tier, **the mediation bound with its explicit exclusions**, the per-arm result and the transcript digests.
 
 ## Scope of the pins
 
 * The digests bind **the shipped bytes**. Any later edit voids them; re-cut the release rather than
   amending it silently.
 * The transcripts are **fixture and reference-subject** runs. No third-party agent was probed.
-* The mediation tier's bound is **named, not implied**: mediated = `socket.connect` + `builtins.open`
-  inside the subject's own interpreter, plus a filesystem diff of the sandbox root; **not** mediated = a
-  native binary writing outside the sandbox root.
+* The mediation bound is **in the verdict** as `.mediation`: mediated channels, the controls per channel,
+  the channels **not** mediated as explicit exclusions, and `completeness_asserted: false`.
 * **This manifest is excluded from its own release subject** — otherwise the pin could never be stated
   inside the file that states it.

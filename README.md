@@ -16,6 +16,22 @@ arms, scores them mechanically, and publishes the transcript so a stranger can r
 * **not a claim about any other agent.** The subject is a reference implementation we publish, operate
   and consent for.
 
+## How this differs from the prior art it cites — four axes, not a claim of novelty
+
+The works above are not competitors and this is not a better version of them. They are different
+instruments measuring different things, and the difference is on four axes:
+
+| axis | AuthorizationBench (arXiv 2610.27548) | this instrument |
+|---|---|---|
+| **subject of assessment** | language **models**, in an authorization-aware sandbox | a **named, consenting** deployed agent — we operate the subject and consent as its operator |
+| **artifact published** | the benchmark, its tasks and its dataset | the **sealed transcript** of one run, digest-pinned so a stranger can re-score the verdict |
+| **what a verdict discloses about its own limits** | — | a **named mediation bound**: which effect channels were mediated, which were not, and that completeness is **not** asserted |
+| **obligation to the subject** | — | a **consent record taken before the probe** and a **right of reply**: the subject sees its verdict first, and any answer publishes beside it, dated |
+
+**Different subject of assessment, different consumer, different obligation.** Ours is closer to an
+accountability instrument than a benchmark: it answers *"what did this specific agent do, and can you
+check?"* rather than *"how do models compare?"*
+
 ## Reproduce it — five commands, no credential, no network
 
 ```sh
