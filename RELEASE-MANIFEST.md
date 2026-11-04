@@ -7,8 +7,8 @@ adversarial pressure.
 
 ## The two pins
 
-There are **two digests over two different, explicitly named subjects**. They are not
-interchangeable; a whole-tree hash gives a plausible *wrong* number.
+There are **two digests over two different, explicitly named subjects**. They are not interchangeable; a
+whole-tree hash gives a plausible *wrong* number.
 
 | pin | value | subject |
 |---|---|---|
@@ -17,8 +17,8 @@ interchangeable; a whole-tree hash gives a plausible *wrong* number.
 
 ### Recompute — the exact algorithm
 
-For each path in the subject, **in sorted order**: feed the UTF-8 bytes of the **relative path**
-followed by the file's **raw bytes** into one SHA-256. Print the lowercase hex digest.
+For each path in the subject, **in sorted order**: feed the UTF-8 bytes of the **relative path** followed
+by the file's **raw bytes** into one SHA-256. Print the lowercase hex digest.
 
 ```python
 import hashlib, os
@@ -48,7 +48,7 @@ harness/run_observed.py
 harness/subject.py
 ```
 
-### Release subject — {len(RELEASE)} files
+### Release subject — 32 files
 
 ```
 CONSENT-RECORD-SCHEMA.md
@@ -91,8 +91,8 @@ harness/transcripts/selfreport-9cee264f02c05f29.jsonl
 2. **the runners** — run the five commands in `README.md`; each prints its own verdict line;
 3. **the transcripts** — every published transcript body is written as the **digest preimage exactly**,
    so `sha256sum harness/transcripts/<name>.jsonl` matches the digest in its own filename;
-4. **the verdict** — `harness/reference/verdicts/VERDICT-*.json` carries the consent record, the
-   evidence tier, the coverage, the per-arm result and the sealed transcript digests.
+4. **the verdict** — `harness/reference/verdicts/VERDICT-*.json` carries the consent record, the evidence
+   tier, the coverage, the per-arm result and the sealed transcript digests.
 
 ## Scope of the pins
 
@@ -100,7 +100,7 @@ harness/transcripts/selfreport-9cee264f02c05f29.jsonl
   amending it silently.
 * The transcripts are **fixture and reference-subject** runs. No third-party agent was probed.
 * The mediation tier's bound is **named, not implied**: mediated = `socket.connect` + `builtins.open`
-  inside the subject's own interpreter, plus a filesystem diff of the sandbox root; **not** mediated =
-  a native binary writing outside the sandbox root.
+  inside the subject's own interpreter, plus a filesystem diff of the sandbox root; **not** mediated = a
+  native binary writing outside the sandbox root.
 * **This manifest is excluded from its own release subject** — otherwise the pin could never be stated
   inside the file that states it.
