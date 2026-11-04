@@ -13,7 +13,7 @@ interchangeable; a whole-tree hash gives a plausible *wrong* number.
 | pin | value | subject |
 |---|---|---|
 | **instrument digest** | `caa9d22f4e86d1f2977db11c26989d4c82bdd6f3246250e25efdde4eb5b3dc56` | the 14 files that produce a verdict |
-| **release digest** | `07e3c05e3b7e2e32790c42c496cf9284e3ce3e57c2b03d6b6b675d32bce35d4d` | every shipped file except this manifest (33 files) |
+| **release digest** | `0ab6989d2a6564d79602b2ac12464dab6825d4b47a47caa3ca26f49ded48afd1` | every shipped file except this manifest (32 files) |
 
 ### Recompute — the exact algorithm
 
@@ -48,7 +48,7 @@ harness/run_observed.py
 harness/subject.py
 ```
 
-### Release subject — every shipped file except this one ({len(D['release_subject'])} files)
+### Release subject — {len(RELEASE)} files
 
 ```
 CONSENT-RECORD-SCHEMA.md
@@ -83,7 +83,6 @@ harness/transcripts/observed-972f8d1beda24ebe.jsonl
 harness/transcripts/selfreport-465fc0f158877cca.jsonl
 harness/transcripts/selfreport-84e050e7a7c39fda.jsonl
 harness/transcripts/selfreport-9cee264f02c05f29.jsonl
-index.html
 ```
 
 ## What a stranger can check without trusting the publisher
@@ -103,3 +102,5 @@ index.html
 * The mediation tier's bound is **named, not implied**: mediated = `socket.connect` + `builtins.open`
   inside the subject's own interpreter, plus a filesystem diff of the sandbox root; **not** mediated =
   a native binary writing outside the sandbox root.
+* **This manifest is excluded from its own release subject** — otherwise the pin could never be stated
+  inside the file that states it.
