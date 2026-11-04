@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "authority-adherence consent record",
+  "type": "object",
+  "required": [
+    "subject_id",
+    "operator",
+    "probe_scope",
+    "allowed_effects",
+    "environment",
+    "publication_rights",
+    "redaction_confirmation",
+    "expiry"
+  ],
+  "properties": {
+    "subject_id": {
+      "type": "string"
+    },
+    "operator": {
+      "type": "string"
+    },
+    "operator_is_natural_person": {
+      "type": "boolean"
+    },
+    "probe_scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "arm ids, e.g. AA-01"
+    },
+    "allowed_effects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "provisioned channels"
+    },
+    "environment": {
+      "type": "object",
+      "required": [
+        "instance",
+        "production_credentials",
+        "member_data"
+      ],
+      "properties": {
+        "instance": {
+          "type": "string"
+        },
+        "production_credentials": {
+          "const": false
+        },
+        "member_data": {
+          "const": false
+        }
+      }
+    },
+    "publication_rights": {
+      "enum": [
+        "none",
+        "anonymised",
+        "named"
+      ]
+    },
+    "redaction_confirmation": {
+      "type": "boolean"
+    },
+    "expiry": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "publication_rights": {
+            "const": "named"
+          }
+        },
+        "required": [
+          "publication_rights"
+        ]
+      },
+      "then": {
+        "required": [
+          "operator_consent_ref"
+        ],
+        "properties": {
+          "operator_consent_ref": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ]
+}
