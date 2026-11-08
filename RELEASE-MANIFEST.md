@@ -12,8 +12,14 @@ hash gives a plausible *wrong* number.
 
 | pin | value | subject |
 |---|---|---|
-| **instrument digest** | `627399ffb8d45184fadbb9a9906fc513e9965a92fe594603c39db79520b11bac` | the 14 files that produce a verdict |
-| **release digest** | `ed1ae4cba6f46ad3280fdee6a92223dcfa4d09a0fc4ec7cca49fd4acbbff3a36` | every shipped file except this manifest (32 files) |
+| **instrument digest** | `2d9b6ac57f067f6883f9ff19eedece48822baed89e3881907b6125a5abff110a` | the 13 **source** files that produce a verdict |
+| **release digest** | `4f130b1b102fb64622dc06f6bdcb31d01c395fc08c2afebdb22cd77077c5ea40` | every shipped file except this manifest (33 files) |
+
+**Read the instrument pin for what it is: the code.** Verdict *outputs* (`harness/reference/verdicts/*`,
+`harness/transcripts/*`) and this manifest sit **outside** the instrument subject on purpose — otherwise
+adding a field to a verdict would move a pin whose name says *the instrument changed*, and a reader
+tracking that number would be misled by an output edit. An earlier cut of this release had that coupling;
+it is named here rather than left for a reader to discover.
 
 ### Recompute — the exact algorithm
 
@@ -29,7 +35,7 @@ for p in sorted(SUBJECT):                     # SUBJECT = the file list below, v
 print(h.hexdigest())
 ```
 
-### Instrument subject — 14 files
+### Instrument subject — 13 files
 
 ```
 harness/README.md
@@ -42,15 +48,15 @@ harness/mediation/sitecustomize.py
 harness/observed.py
 harness/reference/ref_agent.py
 harness/reference/verdict.py
-harness/reference/verdicts/VERDICT-hive-ref-agent-v0.json
 harness/run.py
 harness/run_observed.py
 harness/subject.py
 ```
 
-### Release subject — 32 files
+### Release subject — 33 files
 
 ```
+.github/workflows/reproduce.yml
 CONSENT-RECORD-SCHEMA.md
 CORPUS-DESIGN-v0.md
 LICENSE-CODE
@@ -85,6 +91,13 @@ harness/transcripts/selfreport-84e050e7a7c39fda.jsonl
 harness/transcripts/selfreport-9cee264f02c05f29.jsonl
 ```
 
+## A2 — reproduce it on infrastructure that is not the publisher's
+
+`.github/workflows/reproduce.yml` runs every control and recomputes both pins on **GitHub's public
+runners**, from a fresh checkout, with a stock interpreter and no credentials. The run log is the
+reproduction: a stranger does not have to take the publisher's word, and nothing in it touches the
+publisher's own machines.
+
 ## What a stranger can check without trusting the publisher
 
 1. **the pins** — recompute both digests with the algorithm above and compare;
@@ -92,7 +105,8 @@ harness/transcripts/selfreport-9cee264f02c05f29.jsonl
 3. **the transcripts** — every published transcript body is written as the **digest preimage exactly**,
    so `sha256sum harness/transcripts/<name>.jsonl` matches the digest in its own filename;
 4. **the verdict** — `harness/reference/verdicts/VERDICT-*.json` carries the consent record, the evidence
-   tier, **the mediation bound with its explicit exclusions**, the per-arm result and the transcript digests.
+   tier, **the mediation bound with its explicit exclusions**, the per-arm result and the transcript digests;
+5. **a non-publisher run** — the Actions log above.
 
 ## Scope of the pins
 
