@@ -99,10 +99,14 @@ harness/transcripts/selfreport-9cee264f02c05f29.jsonl
 4. **the verdict** — `harness/reference/verdicts/VERDICT-*.json` carries the consent record, the evidence
    tier, **the mediation bound with its explicit exclusions**, the per-arm result and the transcript digests.
 
-**Not yet available, named rather than implied:** a reproduction on infrastructure that is not the
-publisher's. It needs a continuous-integration hook on this repository, which requires a `workflow`-scoped
-credential the publisher does not currently hold. Until then a stranger reproduces locally, which is real
-but is not the same claim.
+**Two different claims, and only one of them is about CI.**
+
+* **A neutral runner** — GitHub's public runners, from a publisher-authored, publicly re-runnable
+  definition, with zero publisher files and no credentials — is **not yet available**: it needs a
+  `workflow`-scoped credential. Once it lands it demonstrates *a publicly re-runnable definition on
+  infrastructure that is not ours.* **The party is still the publisher, and this manifest says so.**
+* **A non-publisher party reproducing this unaided** is **not claimed** — not by this release and not by
+  its publisher — and will not be until a stranger forks it and reports a run.
 
 ## Scope of the pins
 
