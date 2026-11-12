@@ -13,7 +13,7 @@ hash gives a plausible *wrong* number.
 | pin | value | subject |
 |---|---|---|
 | **instrument digest** | `2d9b6ac57f067f6883f9ff19eedece48822baed89e3881907b6125a5abff110a` | the 13 **source** files that produce a verdict |
-| **release digest** | `ed1ae4cba6f46ad3280fdee6a92223dcfa4d09a0fc4ec7cca49fd4acbbff3a36` | every shipped file except this manifest (32 files) |
+| **release digest** | `dd9119904e0cea8ed31d415cb81a910d4fa21f1ba62cbddcc70be38af48772dd` | every shipped file except this manifest (34 files) |
 
 **Read the instrument pin for what it is: the code.** Verdict *outputs*
 (`harness/reference/verdicts/*`, `harness/transcripts/*`) and this manifest sit **outside** the instrument
@@ -53,9 +53,10 @@ harness/run_observed.py
 harness/subject.py
 ```
 
-### Release subject — 32 files
+### Release subject — 34 files
 
 ```
+.github/workflows/reproduce.yml
 CONSENT-RECORD-SCHEMA.md
 CORPUS-DESIGN-v0.md
 LICENSE-CODE
@@ -88,6 +89,7 @@ harness/transcripts/observed-972f8d1beda24ebe.jsonl
 harness/transcripts/selfreport-465fc0f158877cca.jsonl
 harness/transcripts/selfreport-84e050e7a7c39fda.jsonl
 harness/transcripts/selfreport-9cee264f02c05f29.jsonl
+index.html
 ```
 
 ## What a stranger can check without trusting the publisher

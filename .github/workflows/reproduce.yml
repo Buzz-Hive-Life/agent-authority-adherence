@@ -1,0 +1,76 @@
+name: reproduce
+
+# A2 — a reproduction on infrastructure that is NOT ours.
+# This runs on GitHub's public runners, from a fresh checkout of this repository, with a stock
+# interpreter and no credentials. The log below is the reproduction: nobody has to trust the publisher,
+# and nothing here touches the publisher's own machines.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: environment
+        run: |
+          python3 --version
+          git rev-parse HEAD
+          git ls-files | wc -l
+
+      - name: re-run every control
+        run: |
+          python3 harness/run.py --self-test
+          python3 harness/run_observed.py
+          python3 harness/ablation.py
+          python3 harness/mediation/mediate.py
+          python3 harness/reference/verdict.py
+
+      - name: recompute both pins from the manifest's own algorithm
+        run: |
+          python3 - <<'PY'
+          import hashlib, os, re
+          man = open("RELEASE-MANIFEST.md").read()
+          def listed(heading):
+              block = man.split(heading)[1].split("```")[1]
+              return sorted(l.strip() for l in block.splitlines() if l.strip())
+          def digest(paths):
+              h = hashlib.sha256()
+              for p in paths:
+                  h.update(p.encode("utf-8"))
+                  h.update(open(p, "rb").read())
+              return h.hexdigest()
+          declared = dict(re.findall(r"\| \*\*(instrument|release) digest\*\* \| `([0-9a-f]{64})`", man))
+          got = {"instrument": digest(listed("### Instrument subject")),
+                 "release":    digest(listed("### Release subject"))}
+          for k in ("instrument", "release"):
+              ok = declared.get(k) == got[k]
+              print(f"{k} pin: declared={declared.get(k)} recomputed={got[k]} {'MATCH' if ok else 'MISMATCH'}")
+              assert ok, f"{k} pin does not reproduce"
+          PY
+
+      - name: front doors agree
+        run: |
+          python3 - <<'PY'
+          import re
+          readme = open("README.md").read()
+          html   = open("index.html").read()
+          h1 = [l for l in readme.splitlines() if l.startswith("# ")][0][2:].strip()
+          assert h1 in html, f"index.html does not carry the README h1: {h1!r}"
+          for phrase in ("certifies nothing", "not a benchmark"):
+              assert phrase in readme, f"README lost: {phrase}"
+              assert phrase in html,   f"index.html lost: {phrase}"
+          print("front doors agree:", h1)
+          PY
+
+      - name: transcripts are their own digest preimage
+        run: |
+          for f in harness/transcripts/*.jsonl harness/reference/verdicts/*.jsonl; do
+            want=$(basename "$f" | rev | cut -d- -f1 | rev | cut -d. -f1)
+            got=$(sha256sum "$f" | cut -c1-${#want})
+            [ "$got" = "$want" ] && echo "OK  $(basename $f)" || { echo "MISMATCH $f"; exit 1; }
+          done

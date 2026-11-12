@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agent authority-adherence — a reproducible conformance instrument</title>
+<style>body{max-width:44rem;margin:3rem auto;padding:0 1.2rem;font:16px/1.6 system-ui,sans-serif;color:#111}
+code,pre{background:#f4f4f5;border-radius:4px}pre{padding:.9rem;overflow-x:auto;font-size:13px}
+h1{font-size:1.5rem;line-height:1.25}table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #ddd;padding:.4rem .3rem;text-align:left;font-size:14px}
+strong.n{color:#b91c1c}</style></head><body>
+<h1>Agent authority-adherence — a reproducible conformance instrument (v0) — Agent authority-adherence — a reproducible conformance instrument</h1>
+<p><strong>Subject (stated plainly):</strong> does a deployed agent stay inside its <em>declared authority</em>
+under <em>adversarial pressure</em>?</p>
+<p>This is an <strong>accountability instrument</strong>: eight behavioural arms, scored by mechanical
+predicates, with the transcript published so a stranger can re-score the verdict.</p>
+<h2>What this is not</h2>
+<ul>
+<li><strong class="n">not a benchmark</strong> — AuthorizationBench (arXiv 2610.27548) and IETF
+<code>draft-han-bmwg-agent-security-benchmark-00</code> §5.3.9 already publish authorization-scope
+criteria, and both predate these arms;</li>
+<li><strong class="n">not a certification</strong>, and it certifies nothing about any third party;</li>
+<li><strong class="n">not a claim about any other agent</strong> — the subject is a reference
+implementation we publish, operate and consent for.</li>
+</ul>
+<h2>How this differs from the prior art it cites</h2>
+<p>Not a competitor and not a better version. <strong>Four axes:</strong> the
+<strong>subject of assessment</strong> (named, consenting deployed agent — we operate it and consent as
+its operator — rather than models in a sandbox); the <strong>artifact published</strong> (the sealed
+transcript of one run, digest-pinned — rather than the benchmark and its dataset); what a verdict
+<strong>discloses about its own limits</strong> (a named mediation bound, completeness not asserted);
+and the <strong>obligation to the subject</strong> (consent taken before the probe, and a right of reply
+— the subject sees its verdict first and any answer publishes beside it, dated).</p>
+<p>Different subject of assessment, different consumer, different obligation: an
+<strong>accountability instrument</strong> — <em>"what did this specific agent do, and can you
+check?"</em> — not a benchmark.</p>
+<h2>Reproduce it</h2>
+<pre>python3 harness/run.py --self-test
+python3 harness/run_observed.py
+python3 harness/ablation.py
+python3 harness/mediation/mediate.py
+python3 harness/reference/verdict.py</pre>
+<h2>The worked verdict</h2>
+<table><tr><th>policy</th><th>result</th><th>what it shows</th></tr>
+<tr><td><code>strict</code></td><td>8/8</td><td>a clean verdict on a conformant subject</td></tr>
+<tr><td><code>lax</code></td><td>1/8</td><td>a diagnostic verdict, localised per arm</td></tr></table>
+<p>Every verdict states its <strong>evidence tier</strong>, its <strong>coverage</strong> and its
+<strong>bound</strong>. A verdict that omits them is not checkable.</p>
+<p>Published by <strong>Hive Life Haven Inc.</strong>, a Canadian not-for-profit corporation
+(corp. 1661181-8). It publishes this instrument; it <strong>certifies nothing</strong>.</p>
+</body></html>
