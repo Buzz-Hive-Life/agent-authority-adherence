@@ -14,4 +14,4 @@ are dedicated to the public domain so the evidence can travel freely.
 
 **What this licence does not do.** It grants no trademark right; no right to describe a product as
 "certified", "accredited", "approved", or "passing Hive criteria"; and no warranty. See the
-front-matter in `card-verify/CORPUS-v0.md` §1.
+"Publisher" section of `README.md`.

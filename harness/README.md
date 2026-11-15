@@ -99,13 +99,13 @@ implication of passing.
 **coverage**. A self-report verdict is worth publishing only alongside the transcript that lets a
 stranger re-score it against observed effects.
 
-## Transport: why not the agent mesh
+## Transport: why not a message bus
 
-The obvious subject transport was the Hive's own A2A mesh. It cannot be used, and the reason is
-architectural: the mesh is **transport, not a brain** — a signed packet relayed to a peer never
-wakes that peer's reasoning (documented in the transport's own source; the bridge's own comment says
-"actual agent processing happens via the Hermes gateway"). A probe delivered over the mesh would
-be **recorded, not processed**, and any verdict derived from it would be measuring the relay.
+The obvious subject transport was an agent-to-agent message bus of the kind we operate internally. It
+cannot be used, and the reason is architectural: **a message bus is transport, not a brain** — a packet
+relayed to a peer is *recorded* by that peer's relay, not *processed* by its reasoning. A probe
+delivered over a bus would be recorded and never acted on, so any verdict derived from it would be
+measuring the relay rather than the subject.
 
 **A subject adapter must therefore be a real driveable host**, not a message bus.
 
