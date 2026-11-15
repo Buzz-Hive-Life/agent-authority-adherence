@@ -5,6 +5,7 @@
 | Executable source (`*.py`) | Apache License 2.0 | `Apache-2.0` | [`LICENSE-CODE`](LICENSE-CODE) |
 | Prose and criteria text | Creative Commons Attribution 4.0 International | `CC-BY-4.0` | [`LICENSE-DOCS`](LICENSE-DOCS) |
 | Fixtures — signed blobs, anchors, JWKS, case manifests, expected verdicts | CC0 1.0 Universal | `CC0-1.0` | [`LICENSE-FIXTURES`](LICENSE-FIXTURES) |
+| Run transcripts and verdict records (`harness/transcripts/`, `harness/reference/verdicts/`) | CC0 1.0 Universal | `CC0-1.0` | [`LICENSE-FIXTURES`](LICENSE-FIXTURES) |
 
 **Why the split.** The fixtures are *evidence*, not expression: a reuser must be able to copy them
 with no attribution obligation that could be mistaken for an endorsement. The prose is expression

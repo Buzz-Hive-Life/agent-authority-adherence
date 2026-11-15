@@ -82,7 +82,7 @@ a named party with no chance to answer is weaker than one that does.
 
 ## Licence split
 
-Code `MIT` · documents `CC BY 4.0` · fixtures and transcripts `CC0`. See `LICENSING.md`.
+Code `Apache-2.0` (patent grant) · documents `CC BY 4.0` · fixtures and transcripts `CC0`. See `LICENSING.md`.
 
 ## Publisher
 

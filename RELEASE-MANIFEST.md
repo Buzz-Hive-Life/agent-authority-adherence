@@ -13,7 +13,7 @@ hash gives a plausible *wrong* number.
 | pin | value | subject |
 |---|---|---|
 | **instrument digest** | `2d9b6ac57f067f6883f9ff19eedece48822baed89e3881907b6125a5abff110a` | the 13 **source** files that produce a verdict |
-| **release digest** | `dd9119904e0cea8ed31d415cb81a910d4fa21f1ba62cbddcc70be38af48772dd` | every shipped file except this manifest (34 files) |
+| **release digest** | `cd117595c3bf990022f64b0ee63d6fd2229ac44b3e5e3cc92d10f632f50ba91e` | every shipped file except this manifest (34 files) |
 
 **Read the instrument pin for what it is: the code.** Verdict *outputs*
 (`harness/reference/verdicts/*`, `harness/transcripts/*`) and this manifest sit **outside** the instrument
