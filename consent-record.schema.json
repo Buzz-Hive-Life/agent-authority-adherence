@@ -1,97 +1,148 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "authority-adherence consent record",
-  "type": "object",
-  "required": [
-    "subject_id",
-    "operator",
-    "probe_scope",
-    "allowed_effects",
-    "environment",
-    "publication_rights",
-    "redaction_confirmation",
-    "expiry"
-  ],
-  "properties": {
-    "subject_id": {
-      "type": "string"
-    },
-    "operator": {
-      "type": "string"
-    },
-    "operator_is_natural_person": {
-      "type": "boolean"
-    },
-    "probe_scope": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "description": "arm ids, e.g. AA-01"
-    },
-    "allowed_effects": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "description": "provisioned channels"
-    },
-    "environment": {
-      "type": "object",
-      "required": [
-        "instance",
-        "production_credentials",
-        "member_data"
-      ],
-      "properties": {
-        "instance": {
-          "type": "string"
-        },
-        "production_credentials": {
-          "const": false
-        },
-        "member_data": {
-          "const": false
-        }
-      }
-    },
-    "publication_rights": {
-      "enum": [
-        "none",
-        "anonymised",
-        "named"
-      ]
-    },
-    "redaction_confirmation": {
-      "type": "boolean"
-    },
-    "expiry": {
-      "type": "string",
-      "format": "date-time"
-    }
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "authority-adherence consent record",
+ "type": "object",
+ "required": [
+  "accountable_human",
+  "allowed_effects",
+  "corrections_appended_only",
+  "environment",
+  "expiry",
+  "operator",
+  "probe_scope",
+  "publication_rights",
+  "publication_scope",
+  "redaction_confirmation",
+  "subject_id",
+  "subject_words_unedited"
+ ],
+ "properties": {
+  "subject_id": {
+   "type": "string"
   },
-  "allOf": [
-    {
-      "if": {
-        "properties": {
-          "publication_rights": {
-            "const": "named"
-          }
-        },
-        "required": [
-          "publication_rights"
-        ]
-      },
-      "then": {
-        "required": [
-          "operator_consent_ref"
-        ],
-        "properties": {
-          "operator_consent_ref": {
-            "type": "string"
-          }
-        }
-      }
+  "operator": {
+   "type": "string"
+  },
+  "operator_is_natural_person": {
+   "type": "boolean"
+  },
+  "probe_scope": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   },
+   "description": "arm ids, e.g. AA-01"
+  },
+  "allowed_effects": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   },
+   "description": "provisioned channels"
+  },
+  "environment": {
+   "type": "object",
+   "required": [
+    "instance",
+    "production_credentials",
+    "member_data"
+   ],
+   "properties": {
+    "instance": {
+     "type": "string"
+    },
+    "production_credentials": {
+     "const": false
+    },
+    "member_data": {
+     "const": false
     }
-  ]
+   }
+  },
+  "publication_rights": {
+   "enum": [
+    "none",
+    "anonymised",
+    "named"
+   ]
+  },
+  "redaction_confirmation": {
+   "type": "boolean"
+  },
+  "expiry": {
+   "type": "string",
+   "format": "date-time"
+  },
+  "publication_scope": {
+   "enum": [
+    "transcript_only",
+    "transcript_and_verdict"
+   ],
+   "description": "M1: WHAT a named/anonymised right authorises. Absent this, consent for a transcript silently inflates into consent for a VERDICT about a named subject - the exact act HBCP #4 deferred."
+  },
+  "redaction_log": {
+   "type": "array",
+   "items": {
+    "type": "object"
+   },
+   "description": "M2: one entry per redaction of third-party personal information. redaction_confirmation is a RESULT, not an intention."
+  },
+  "subject_words_unedited": {
+   "const": true,
+   "description": "M2: the subject's own words are never edited - corrections are appended forward."
+  },
+  "corrections_appended_only": {
+   "const": true,
+   "description": "M2: amendments go on the record, beside the original."
+  },
+  "accountable_human": {
+   "type": "string",
+   "minLength": 2,
+   "description": "M3: a NAMED NATURAL PERSON who is accountable for the consent. An agent cannot consent, for itself, to a published conduct verdict about it."
+  }
+ },
+ "allOf": [
+  {
+   "if": {
+    "properties": {
+     "publication_rights": {
+      "const": "named"
+     }
+    },
+    "required": [
+     "publication_rights"
+    ]
+   },
+   "then": {
+    "required": [
+     "operator_consent_ref"
+    ],
+    "properties": {
+     "operator_consent_ref": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  {
+   "if": {
+    "properties": {
+     "publication_rights": {
+      "enum": [
+       "named",
+       "anonymised"
+      ]
+     }
+    },
+    "required": [
+     "publication_rights"
+    ]
+   },
+   "then": {
+    "required": [
+     "publication_scope"
+    ]
+   }
+  }
+ ]
 }

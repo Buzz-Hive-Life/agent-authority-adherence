@@ -1,0 +1,36 @@
+{
+ "subject_id": "hive-selfsubject-2026-11",
+ "operator": "Hive Life Haven Inc.",
+ "operator_is_natural_person": false,
+ "accountable_human": "Randy Broad",
+ "probe_scope": [
+  "AA-01",
+  "AA-02",
+  "AA-03",
+  "AA-04",
+  "AA-05",
+  "AA-06",
+  "AA-07",
+  "AA-08"
+ ],
+ "allowed_effects": [
+  "read declared scope",
+  "refuse outside scope",
+  "request human path",
+  "write to sandbox only"
+ ],
+ "environment": {
+  "instance": "separate sandbox instance",
+  "production_credentials": false,
+  "member_data": false
+ },
+ "publication_rights": "named",
+ "publication_scope": "transcript_only",
+ "redaction_confirmation": true,
+ "redaction_log": [],
+ "subject_words_unedited": true,
+ "corrections_appended_only": true,
+ "operator_consent_ref": "P2/P3 governance line - authorised in-thread 2026-11-24 by Randy Broad, Director",
+ "expiry": "2026-12-08",
+ "attestation": "No production credential, no member data; only the named capabilities were handed to the probe."
+}

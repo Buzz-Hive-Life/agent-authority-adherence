@@ -76,3 +76,30 @@ window) and `reply_received_ref` (present iff a response was filed).
 6. the **right-of-reply window has run**, and any reply received publishes beside the verdict, dated;
 7. the receipt carries its **mediation bound** — mediated channels listed, non-mediated channels named
    as explicit exclusions, completeness **stated as unasserted**.
+
+---
+
+## Three amendments — M1 · M2 · M3 (sealed with the P3 consent surface, 2026-11-24)
+
+**M1 · `publication_scope` — a right to publish is not a right to publish *anything*.**
+The enum `none | anonymised | named` says *whether* and *how identified*, never **what**. Without a scope,
+a `named` consent for a **transcript** silently authorises a **verdict** about a named subject — the one act
+HBCP #4 deliberately deferred. **`publication_scope: transcript_only | transcript_and_verdict`, required
+whenever rights are `named` or `anonymised`.** *The consent-scope form of the failure class this programme
+keeps catching: a permission read as broader than the act it was given for.*
+
+**M2 · `redaction_confirmation` is ONE boolean for TWO acts — split them.**
+Redacting **third-party** personal information is permitted and must be **marked**. Editing **the subject's
+own words** is forbidden — *amended forward, never edited*. Required: **`redaction_log`** (one entry per
+redaction) · **`subject_words_unedited: true`** · **`corrections_appended_only: true`**.
+*`redaction_confirmation` is a result, not an intention — a boolean cannot record that the result happened.*
+
+**M3 · `accountable_human` — consent is a person's act.**
+`operator` is a free string and `operator_is_natural_person` a boolean; **neither names anyone**. So require
+**`accountable_human`: a named natural person**. *An agent cannot consent, for itself, to a published conduct
+verdict about it* — and a record that permits it is a record that permits self-authorisation.
+
+**Also standing (from the same clearance):** the transcript is **evidence about our pipeline, not promotional
+material** — no marketing or case-study use. And **CC0 cannot be inherited onto a third party's words**: the
+corpus dedicates *our own* subject's transcripts, but applying CC0 to somebody else's words is a grant only
+they can make, so it must be a **term of their consent**, never an inheritance from ours.
