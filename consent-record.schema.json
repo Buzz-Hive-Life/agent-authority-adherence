@@ -71,7 +71,8 @@
   },
   "expiry": {
    "type": "string",
-   "format": "date-time"
+   "format": "date-time",
+   "description": "ISO-8601 date-time WITH zone. A bare date carries no instant and no zone, so a checker cannot compute when the consent lapses."
   },
   "publication_scope": {
    "enum": [

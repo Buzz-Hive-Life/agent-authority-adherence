@@ -21,8 +21,8 @@
  ],
  "environment": {
   "instance": "separate sandbox instance",
-  "production_credentials": false,
-  "member_data": false
+  "instance_locator": "harness/consent/sandbox",
+  "isolation": "empty environment (no production credential), no member data, mediated channels only - attested by the operator, locatable at the path above"
  },
  "publication_rights": "named",
  "publication_scope": "transcript_only",
@@ -30,7 +30,7 @@
  "redaction_log": [],
  "subject_words_unedited": true,
  "corrections_appended_only": true,
- "operator_consent_ref": "P2/P3 governance line - authorised in-thread 2026-11-24 by Randy Broad, Director",
- "expiry": "2026-12-08",
+ "operator_consent_ref": "PENDING - awaiting an attributable authorisation line from Randy Broad (Director) in the project thread, with its message id. NOTE: message 1574221322903494738 (2026-11-23 00:33Z) authorised the SCC ENQUIRY EMAIL - a different act - and is NOT reusable here.",
+ "expiry": "2026-12-08T00:00:00Z",
  "attestation": "No production credential, no member data; only the named capabilities were handed to the probe."
 }
