@@ -53,6 +53,25 @@ jobs:
               assert ok, f"{k} pin does not reproduce"
           PY
 
+      - name: manifest lists the shipped set (the arm a digest cannot provide)
+        run: |
+          python3 - <<'PY'
+          import subprocess, re
+          # A DIGEST CANNOT PROVE WHAT IT OMITS: declared==recomputed passes over a stale list.
+          # So the list itself is checked against the shipped set.
+          man = open("RELEASE-MANIFEST.md").read()
+          def listed(h):
+              b = man.split(h)[1].split("```")[1]
+              return sorted(l.strip() for l in b.splitlines() if l.strip())
+          tracked = set(subprocess.run(["git","ls-files"],capture_output=True,text=True).stdout.split())
+          ins = set(listed("### Instrument subject")); rel = set(listed("### Release subject"))
+          missing_rel = sorted(t for t in tracked if t != "RELEASE-MANIFEST.md" and t not in rel)
+          print("tracked:", len(tracked), "| release list:", len(rel), "| absent from the release list:", missing_rel)
+          assert not missing_rel, f"shipped files absent from the manifest's release list: {missing_rel}"
+          assert ins <= rel, f"instrument subject is not a subset of the release subject: {sorted(ins-rel)}"
+          print("manifest lists the shipped set: OK")
+          PY
+
       - name: front doors agree
         run: |
           python3 - <<'PY'

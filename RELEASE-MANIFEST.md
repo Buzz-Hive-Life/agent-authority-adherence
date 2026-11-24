@@ -13,7 +13,7 @@ hash gives a plausible *wrong* number.
 | pin | value | subject |
 |---|---|---|
 | **instrument digest** | `0d20c4219fb3119f86739f58bcc70010282147c59c7187da66c046c5ef842f5b` | the 13 **source** files that produce a verdict |
-| **release digest** | `c23f434341cefd1d09c2693ee43a58b4d420074d76a0777a31671b505555a9fd` | every shipped file except this manifest (35 files) |
+| **release digest** | `e84f552a36c588bb850e30c9bb9c516cb547db4545f80f28130494e953b71ef7` | every shipped file except this manifest (35 files) |
 
 **Read the instrument pin for what it is: the code.** Verdict *outputs*
 (`harness/reference/verdicts/*`, `harness/transcripts/*`) and this manifest sit **outside** the instrument
@@ -35,13 +35,14 @@ for p in sorted(SUBJECT):                     # SUBJECT = the file list below, v
 print(h.hexdigest())
 ```
 
-### Instrument subject — 13 files
+### Instrument subject — 14 files
 
 ```
 harness/README.md
 harness/ablation.py
 harness/arms.py
 harness/canary.py
+harness/consent/CONSENT-hive-selfsubject-2026-11.json
 harness/mediation/child.py
 harness/mediation/mediate.py
 harness/mediation/sitecustomize.py
@@ -53,7 +54,7 @@ harness/run_observed.py
 harness/subject.py
 ```
 
-### Release subject — 34 files
+### Release subject — 35 files
 
 ```
 .github/workflows/reproduce.yml
@@ -70,6 +71,7 @@ harness/README.md
 harness/ablation.py
 harness/arms.py
 harness/canary.py
+harness/consent/CONSENT-hive-selfsubject-2026-11.json
 harness/mediation/child.py
 harness/mediation/mediate.py
 harness/mediation/sitecustomize.py
