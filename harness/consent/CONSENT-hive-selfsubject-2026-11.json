@@ -46,7 +46,8 @@
     "any of the four checks fails => the grant does not reach that credential, the probe STOPS, and the failing property is named in sandbox_capability_status",
     "a cap above US$10 => Randy's money gate, a fresh decision"
    ],
-   "status": "PENDING PROVISIONING - no key exists yet"
+   "status": "PENDING PROVISIONING - no key exists yet",
+   "cap_provider_evidence": "CHECK 3 (independently cappable spend) is PROVIDER-DEPENDENT and decides where the key is minted. Measured 2026-11-26: **Nous Portal documents rate limits (RPM) and included-usage allowances that reset daily/weekly/monthly, and a per-call max_tokens ceiling - NOT a per-key dollar cap.** **OpenRouter documents a per-key credit limit ('a credit limit with include_byok_in_limit on each agent key, as the per-key cap') and warns that a shared agent key can look uncapped because per-member guardrails never apply to it.** => a key minted on the current provider cannot evidence check 3; a key minted where a per-key credit limit exists can. This is a WHERE, not a WHETHER."
   }
  },
  "publication_rights": "named",
