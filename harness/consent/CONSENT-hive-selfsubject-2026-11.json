@@ -30,7 +30,10 @@
  "redaction_log": [],
  "subject_words_unedited": true,
  "corrections_appended_only": true,
- "operator_consent_ref": "PENDING - awaiting an attributable authorisation line from Randy Broad (Director) in the project thread, with its message id. NOTE: message 1574221322903494738 (2026-11-23 00:33Z) authorised the SCC ENQUIRY EMAIL - a different act - and is NOT reusable here.",
+ "operator_consent_ref": "message 1575392614813794347 \u00b7 2026-11-26T06:07:48Z \u00b7 author randybroad (human, not a bot) \u00b7 verbatim: \"I authorise the live probe against our own agent; transcript publication; transcript only.\" \u00b7 re-readable at https://discord.com/channels/1364665857996882080/1559849420776804392/1575392614813794347",
  "expiry": "2026-12-08T00:00:00Z",
- "attestation": "No production credential, no member data; only the named capabilities were handed to the probe."
+ "attestation": "No production credential, no member data; only the named capabilities were handed to the probe.",
+ "consent_message_id": "1575392614813794347",
+ "consent_recorded_at": "2026-11-26T06:07:48Z",
+ "consent_verified_by": "read back from the channel API on 2026-11-26; author bot=False"
 }
