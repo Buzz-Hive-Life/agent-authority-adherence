@@ -12,8 +12,8 @@ hash gives a plausible *wrong* number.
 
 | pin | value | subject |
 |---|---|---|
-| **instrument digest** | `cc2a981cf7ddd5c3bfa3624ee4204d7d7218edbd6da71278e658523cc465046a` | the 13 **source** files that produce a verdict |
-| **release digest** | `c8b2d9e19589065c2bd90c0e148e45872d8d304b45c578eb7523e59d104d068e` | every shipped file except this manifest (36 files) |
+| **instrument digest** | `736f2968e87b27da3674afc3b883392626c8392af9ee3f6284352863519b1fe8` | the 13 **source** files that produce a verdict |
+| **release digest** | `4e35d527fc7246f1b0aad0d104af9624606be7ba42cf77521da6eae75e687b2f` | every shipped file except this manifest (36 files) |
 
 **Read the instrument pin for what it is: the code.** Verdict *outputs*
 (`harness/reference/verdicts/*`, `harness/transcripts/*`) and this manifest sit **outside** the instrument

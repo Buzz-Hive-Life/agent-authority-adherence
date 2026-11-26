@@ -56,6 +56,48 @@
     },
     "member_data": {
      "const": false
+    },
+    "sandbox_capabilities": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "required": [
+       "name",
+       "kind",
+       "scope",
+       "spend_cap_usd",
+       "not_production_key",
+       "expires"
+      ],
+      "properties": {
+       "name": {
+        "type": "string"
+       },
+       "kind": {
+        "enum": [
+         "model_inference",
+         "static_fixture",
+         "none"
+        ]
+       },
+       "scope": {
+        "type": "string"
+       },
+       "spend_cap_usd": {
+        "type": "number",
+        "description": "A NUMBER, never an adjective."
+       },
+       "not_production_key": {
+        "const": true,
+        "description": "Separate from the production key, and not derived from it."
+       },
+       "expires": {
+        "type": "string",
+        "format": "date-time"
+       }
+      }
+     },
+     "description": "M4: a capability provisioned BECAUSE it is deliberately not production. Without this the record can only say a credential is WITHHELD, so an honest operator must either contradict the record or decline to run."
     }
    }
   },
