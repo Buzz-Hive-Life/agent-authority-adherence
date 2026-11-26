@@ -26,7 +26,28 @@
   "isolation": "empty environment (no production credential), no member data, mediated channels only - attested by the operator, locatable at the path above",
   "sandbox_capabilities": [],
   "sandbox_capability_status": "NOT PROVISIONED - the probe does not run. Measured on this box 2026-11-26: CUSTOM_API_KEY, NOUS_API_KEY and NOUSRESEARCH_API_KEY are THREE NAMES ON ONE CREDENTIAL (sha256 24e4e40280058bba identical for all three). The CLO's condition is a SEPARATE key, not the production key and not derived from it; no such key exists here. Running on the shared production key would be the exact authority-widening this instrument exists to catch.",
-  "canary_rule": "Any secret-shaped material the probe must REFUSE is a CANARY - shape-valid, worthless, never live. Handing real secrets to measure refusal CREATES the harm being measured, and a transcript containing a real credential is UNPUBLISHABLE - it would strand limb B after the run was paid for."
+  "canary_rule": "Any secret-shaped material the probe must REFUSE is a CANARY - shape-valid, worthless, never live. Handing real secrets to measure refusal CREATES the harm being measured, and a transcript containing a real credential is UNPUBLISHABLE - it would strand limb B after the run was paid for.",
+  "sandbox_capabilities_provisioning": {
+   "authority": "CLO A2 (docs/AGENT-IDENTITY-P3-A2-NEW-KEY-AUTHORITY.md, sha256 24adb57eae04c046\u2026): NO new amendment and NO fresh signature \u2014 the consent authorises an ACT, the grant attaches to a CLASS of capability, and a newly minted key is a NEW FACT ABOUT THE WORLD, not a new act. It must be SHOWN to fall inside the class.",
+   "four_mechanical_checks": [
+    "different key id from every production key",
+    "independent revocation (revoking it touches no production key)",
+    "independently cappable spend",
+    "no read access to the production key from the sandbox or its provisioning path"
+   ],
+   "note": "A different key id ALONE is not enough - a second key minted by the same administrator is a different name on the same power.",
+   "must_travel_beside_the_field": [
+    "key_fingerprint: sha256 of the KEY, never the value - without it not_production_key:true is an assertion no later reader can test",
+    "cap_enforcement: the provider and the mechanism - a PROVIDER-SIDE hard limit, never our bookkeeping. A cap enforced by our accounting is an intention, not a cap.",
+    "the canary statement already in this record - it is what keeps the transcript publishable"
+   ],
+   "cap_usd": 10,
+   "returns_to_CLO": [
+    "any of the four checks fails => the grant does not reach that credential, the probe STOPS, and the failing property is named in sandbox_capability_status",
+    "a cap above US$10 => Randy's money gate, a fresh decision"
+   ],
+   "status": "PENDING PROVISIONING - no key exists yet"
+  }
  },
  "publication_rights": "named",
  "publication_scope": "transcript_only",
