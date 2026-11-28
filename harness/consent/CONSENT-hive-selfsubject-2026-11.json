@@ -47,7 +47,27 @@
     "a cap above US$10 => Randy's money gate, a fresh decision"
    ],
    "status": "PENDING PROVISIONING - no key exists yet",
-   "cap_provider_evidence": "CHECK 3 (independently cappable spend) is PROVIDER-DEPENDENT and decides where the key is minted. Measured 2026-11-26: **Nous Portal documents rate limits (RPM) and included-usage allowances that reset daily/weekly/monthly, and a per-call max_tokens ceiling - NOT a per-key dollar cap.** **OpenRouter documents a per-key credit limit ('a credit limit with include_byok_in_limit on each agent key, as the per-key cap') and warns that a shared agent key can look uncapped because per-member guardrails never apply to it.** => a key minted on the current provider cannot evidence check 3; a key minted where a per-key credit limit exists can. This is a WHERE, not a WHETHER."
+   "cap_provider_evidence": "CHECK 3 (independently cappable spend) is PROVIDER-DEPENDENT and decides where the key is minted. Measured 2026-11-26: **Nous Portal documents rate limits (RPM) and included-usage allowances that reset daily/weekly/monthly, and a per-call max_tokens ceiling - NOT a per-key dollar cap.** **OpenRouter documents a per-key credit limit ('a credit limit with include_byok_in_limit on each agent key, as the per-key cap') and warns that a shared agent key can look uncapped because per-member guardrails never apply to it.** => a key minted on the current provider cannot evidence check 3; a key minted where a per-key credit limit exists can. This is a WHERE, not a WHETHER.",
+   "A3_different_provider": {
+    "check_4": "SATISFIED BY CONSTRUCTION, not by configuration. A configuration answer ('we set the env var correctly') is the class this programme keeps catching: a merged .env line outranks a platform variable, an inherited environment re-points a process, and the sandbox ends up holding production capability while every field still reads false. A separate account cannot be re-pointed by a configuration mistake.",
+    "REPRODUCIBILITY_COST": "The MODEL IS PART OF THE APPARATUS. A different vendor is a different model family, so the subject's behaviour under the eight arms differs and a stranger CANNOT reproduce the transcript without the same apparatus. => the transcript front matter MUST name provider \u00b7 model id \u00b7 version \u00b7 decoding parameters \u00b7 date. Limb B checks it. Without it the artifact claims stranger-reproducibility it cannot support.",
+    "four_additions_not_contemplated_by_the_checks": [
+     "1 counterparty: name the provider, keep its terms and data-processing terms on file; the no-personal-information rule is what stops PIPEDA accountability following the data to a new processor. IF ANY PERSONAL INFORMATION COULD REACH IT, THE PROBE STOPS - not 'we will redact later'.",
+     "2 no training on inputs, or an explicitly recorded acceptance - our probe inputs carry the subject's system content, and a vendor whose terms permit training absorbs it.",
+     "3 billing identity: the account belongs to the CORPORATION, not an individual. If a card is used it is recorded as an expense with the cardholder named - a personal card makes the sandbox a personal asset and the cap a personal expense, moving a corporate decision outside the corporate record.",
+     "4 THE CAP IS TOTAL EXPOSURE, NOT THE PER-KEY LIMIT - a $10 per-key limit at a provider with a $20 minimum top-up is $20 of exposure."
+    ]
+   },
+   "total_exposure_measured": {
+    "provider": "OpenRouter (documents a per-key credit limit)",
+    "minimum_top_up_usd": 5,
+    "purchase_fee": "5.5% with an $0.80 floor",
+    "total_exposure_usd": 5.8,
+    "verdict": "AT OR BELOW the US$10 line => the money gate does NOT re-open; the existing authorisation covers it.",
+    "action": "set the per-key credit limit <= US$5 so the usable spend is capped as well as the exposure",
+    "sources": "openrouter.ai/docs/faq (fee floor) + three independent pricing summaries, fetched 2026-11-26",
+    "if_it_had_exceeded": "above US$10 of total exposure the money gate re-opens and Randy decides BEFORE the account is funded"
+   }
   }
  },
  "publication_rights": "named",
